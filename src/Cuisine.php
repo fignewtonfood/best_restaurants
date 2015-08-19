@@ -26,9 +26,17 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        static function find()
+        static function find($search_id)
         {
-            
+            $found_cuisine = null;
+            $cuisines_to_search = Cuisine::getAll();
+            foreach($cuisines_to_search as $cuisine){
+                $cuisine_id = $cuisine->getId();
+                if($cuisine_id=== $search_id){
+                    $found_cuisine = $cuisine;
+                }
+            }
+            return $found_cuisine;
         }
 
         static function getAll()
