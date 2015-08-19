@@ -1,0 +1,113 @@
+SPEC SHEET FOR BEST_RESTAURANTS
+// Test Cuisine::save()
+1) Save a cuisine
+    Input: type = "seafood"
+    Output: cuisine object with type "seafood"
+// Test Cuisine::getAll()
+2) Get all cuisines
+    Input: create 2 cuisine objects
+            cuisine1 type = "seafood"
+            cuisine2 type = "Italian"
+    Output: an array containing all cuisine objects
+// Test Cuisine::deleteAll()
+3) Delete all cuisine objects
+    Input: create multiple cuisine objects
+            cuisine1 type = "seafood"
+            cuisine2 type = "Italian"
+    Output: empty array
+// Test Review::save()
+4) Save a review
+    Input: comment = "This place is great!", resturant id = 1
+    Output: review object ["This place is great!",1]
+// Test Review::getAll()
+5) Get all reviews
+    Input: create 2 review objects
+            review1 comment = "This place is great!"
+            restaurant id = 1
+            review2 comment = "This place sucks!!!"
+    Output: review objects [("This place is great!",1),("This place sucks!!!",1)]
+// Test Review::deleteAll()
+6) Delete all review objects
+    Input: create multiple review objects
+            review1 comment = "This place is great!"
+            restaurant id = 1
+            review2 comment= "This place sucks!!!"
+    Output: empty array
+// Test Restaurant::save()
+7) Save a restaurant
+    Input: name = "Burger King", cuisine id = 1
+    Output: restaurant object ["Burger King",1]
+// Test Restaurant::getAll()
+8) Get all restaurants
+    Input: create 2 restaurant objects
+            restaurant1 name = "Burger King"
+            cuisine id = 1
+            restaurant2 name = "Dairy Queen"
+    Output: restaurant objects [("Burger King",1),("Dairy Queen",1)]
+// Test Restaurant::deleteAll()
+9) Delete all restaurant objects
+    Input: create multiple restaurant objects
+            restaurant1 name = "Burger King"
+            cuisine id = 1
+            restaurant2 name= "Dairy Queen"
+    Output: empty array
+// Test Cuisine::getId()
+10)Return id for a cuisine object
+    Input:  type = "seafood", cuisine id = 1
+    Output: 1
+// Test Review::getId()
+11)Return id for a review object
+    Input:  comment = "This place is great!", review id = 1
+    Output: 1
+// Test Restaurant::getId()
+12)Return id for a restaurant object
+    Input:  name = "Burger King", cuisine id = 1
+    Output: 1
+// Test Cuisine::find("type")
+13) Find cuisines that match type
+    Input: cuisine1 type = "seafood"
+        cuisine2 type = "burgers"
+    Output: return cuisine object that matches "type"
+// Test Review::find(restaurant_id)
+14) Return all review by restaurant_id
+    Input:  review1 comment = "This place is great!"
+            restaurant_id = 1
+            review2 comment = "This place sucks!!!"
+            restaurant_id2 = 2
+    Output: review object ["This place is great!",1]
+// Test Restaurant::findName() (by name)
+15) Return a restaurant by name
+    Input: cuisine_id = 1
+           restaurant = "Burger King", 1
+           restaurant2 = "Dairy Queen", 1
+    Output: restaurant object matching name
+// Test Restaurant::findCuisine("type")
+16) Return a restaurant by cuisine type
+    Input: cuisine_id = 1
+           restaurant = "Burger King", 1
+           cuisine_id2 = 2
+           restaurant2 = "Dairy Queen", 2
+    Output: restaurant object matching cuisine_id
+// Test Cuisine::updateType()
+17) Update a cuisine type
+    Input: old_cuisine = "seafod"
+           new_cuisine = "seafood"
+    Output: "seafood"
+// Test Review::updateComment()
+18) Update a comment posted in a review
+    Input: restaurant id = 1
+           old_comment = "This place is great!"
+           new_comment = "This place sucks!!!"
+    Output: "This place sucks!!!"
+// Test Restaurant::updateName()
+19) Update the name of a restaurant
+    Input: cuisine id = 1
+           old_name = "Buger King"
+           new_name = "Burger King"
+    Output: "Burger King"
+// Test Restaurant::updateCuisineId()
+20) Update the cuisine associated with a restaurant
+    Input: name = "Burger King"
+           old cuisine = 1
+           new cuisine = 2
+    Output: 2
