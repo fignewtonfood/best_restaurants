@@ -41,6 +41,11 @@
             }
             return $reviews;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM reviews;");
+        }
     }
 
 
