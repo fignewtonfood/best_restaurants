@@ -64,10 +64,10 @@ x12)Return id for a restaurant object
     Input:  name = "Burger King", cuisine id = 1
     Output: 1
 // Test Cuisine::find("type")
-13) Find cuisines that match type
-    Input: cuisine1 type = "seafood"
-        cuisine2 type = "burgers"
-    Output: return cuisine object that matches "type"
+x13) Find cuisines by id
+    Input: cuisine1 type = "seafood", cuisine id = 1
+            cuisine2 type = "Italian", cuisine id = 2
+    Output: cuisine object ["seafood", 1]
 // Test Review::find(restaurant_id)
 14) Return all review by restaurant_id
     Input:  review1 comment = "This place is great!"
