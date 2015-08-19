@@ -15,6 +15,7 @@
         protected function tearDown()
         {
             Cuisine::deleteAll();
+
         }
 
         function test_save()
@@ -78,6 +79,23 @@
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $type1 = "seafood";
+            $test_cuisine1 = new Cuisine($type1);
+            $test_cuisine1->save();
+            $type2 = "Italian";
+            $test_cuisine2 = new Cuisine($type2);
+            $test_cuisine2->save();
+
+            //Act
+            $result = Cuisine::find($test_cuisine1->getId());
+
+            //Assert
+            $this->assertEquals($test_cuisine1, $result);
         }
 
     }

@@ -26,6 +26,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find()
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisines;");
