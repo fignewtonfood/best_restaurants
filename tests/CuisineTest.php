@@ -4,6 +4,7 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/Cuisine.php";
+    // require_once "src/Restaurant.php";
     $server = 'mysql:host=localhost;dbname=best_restaurants_test';
     $username = 'root';
     $password = 'root';
@@ -64,4 +65,19 @@
             $result = Cuisine::getAll();
             $this->assertEquals([], $result);
         }
+
+        function test_getId()
+        {
+            //Arrange
+            $type = "seafood";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            //Act
+            $result = $test_cuisine->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
     }

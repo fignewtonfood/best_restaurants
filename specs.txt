@@ -52,7 +52,7 @@ x9) Delete all restaurant objects
             restaurant2 name= "Dairy Queen"
     Output: empty array
 // Test Cuisine::getId()
-10)Return id for a cuisine object
+10) Return id for a cuisine object
     Input:  type = "seafood", cuisine id = 1
     Output: 1
 // Test Review::getId()
