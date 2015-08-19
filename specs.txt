@@ -56,11 +56,11 @@ x10) Return id for a cuisine object
     Input:  type = "seafood", cuisine id = 1
     Output: 1
 // Test Review::getId()
-11)Return id for a review object
+x11)Return id for a review object
     Input:  comment = "This place is great!", review id = 1
     Output: 1
 // Test Restaurant::getId()
-12)Return id for a restaurant object
+x12)Return id for a restaurant object
     Input:  name = "Burger King", cuisine id = 1
     Output: 1
 // Test Cuisine::find("type")

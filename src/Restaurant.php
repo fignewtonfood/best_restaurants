@@ -24,7 +24,7 @@
 
         function getId()
         {
-            
+            return $this->id;
         }
 
         function save()
