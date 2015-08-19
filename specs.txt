@@ -1,6 +1,6 @@
 SPEC SHEET FOR BEST_RESTAURANTS
 // Test Cuisine::save()
-1) Save a cuisine
+x1) Save a cuisine
     Input: type = "seafood"
     Output: cuisine object with type "seafood"
 // Test Cuisine::getAll()
