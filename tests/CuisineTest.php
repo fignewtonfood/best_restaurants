@@ -20,7 +20,8 @@
         {
             //Arrange
             $type = "seafood";
-            $test_cuisine = new Cuisine($id, $type);
+            // $id = null;
+            $test_cuisine = new Cuisine($type);
 
             //Act
             $test_cuisine->save();
