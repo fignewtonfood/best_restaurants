@@ -28,6 +28,11 @@
             return $this->restaurant_id;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         static function getAll()
         {
             $returned_reviews = $GLOBALS['DB']->query("SELECT * FROM reviews;");

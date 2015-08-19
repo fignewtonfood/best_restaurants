@@ -22,6 +22,11 @@
             return $this->name;
         }
 
+        function getId()
+        {
+            
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO restaurants (cuisine_id, name) VALUES ({$this->getCuisineId()}, '{$this->getName()}');");

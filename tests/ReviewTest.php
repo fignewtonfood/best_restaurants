@@ -4,6 +4,9 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/Review.php";
+    require_once "src/Cuisine.php";
+    require_once "src/Restaurant.php";
+
     $server = 'mysql:host=localhost;dbname=best_restaurants_test';
     $username = 'root';
     $password = 'root';
@@ -14,6 +17,8 @@
         protected function tearDown()
         {
             Review::deleteAll();
+            Cuisine::deleteAll();
+            Restaurant::deleteAll();
         }
 
         function test_save()
@@ -66,6 +71,30 @@
 
             //Assert
             $this->assertEquals([], $result);
+        }
+
+        function test_getId()
+        {
+            //Arrange
+            $type = "burger";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $name = "Burger King";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($cuisine_id,$name);
+            $test_restaurant->save();
+
+            $comment = "Great burger!";
+            $restaurant_id = $test_restaurant->getId();
+            $test_review = new Review($restaurant_id, $comment);
+            $test_review->save();
+
+            //Act
+            $result = $test_review->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
         }
     }
 
