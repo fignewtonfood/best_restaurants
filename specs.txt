@@ -4,48 +4,48 @@ x1) Save a cuisine
     Input: type = "seafood"
     Output: cuisine object with type "seafood"
 // Test Cuisine::getAll()
-2) Get all cuisines
+x2) Get all cuisines
     Input: create 2 cuisine objects
             cuisine1 type = "seafood"
             cuisine2 type = "Italian"
     Output: an array containing all cuisine objects
 // Test Cuisine::deleteAll()
-3) Delete all cuisine objects
+x3) Delete all cuisine objects
     Input: create multiple cuisine objects
             cuisine1 type = "seafood"
             cuisine2 type = "Italian"
     Output: empty array
 // Test Review::save()
-4) Save a review
+x4) Save a review
     Input: comment = "This place is great!", resturant id = 1
     Output: review object ["This place is great!",1]
 // Test Review::getAll()
-5) Get all reviews
+x5) Get all reviews
     Input: create 2 review objects
             review1 comment = "This place is great!"
             restaurant id = 1
             review2 comment = "This place sucks!!!"
     Output: review objects [("This place is great!",1),("This place sucks!!!",1)]
 // Test Review::deleteAll()
-6) Delete all review objects
+x6) Delete all review objects
     Input: create multiple review objects
             review1 comment = "This place is great!"
             restaurant id = 1
             review2 comment= "This place sucks!!!"
     Output: empty array
 // Test Restaurant::save()
-7) Save a restaurant
+x7) Save a restaurant
     Input: name = "Burger King", cuisine id = 1
     Output: restaurant object ["Burger King",1]
 // Test Restaurant::getAll()
-8) Get all restaurants
+x8) Get all restaurants
     Input: create 2 restaurant objects
             restaurant1 name = "Burger King"
             cuisine id = 1
             restaurant2 name = "Dairy Queen"
     Output: restaurant objects [("Burger King",1),("Dairy Queen",1)]
 // Test Restaurant::deleteAll()
-9) Delete all restaurant objects
+x9) Delete all restaurant objects
     Input: create multiple restaurant objects
             restaurant1 name = "Burger King"
             cuisine id = 1
