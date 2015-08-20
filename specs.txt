@@ -94,7 +94,7 @@ x17) Update a comment posted in a review
            new_comment = "This place sucks!!!"
     Output: "This place sucks!!!"
 // Test Restaurant::updateName()
-18) Update the name of a restaurant
+x18) Update the name of a restaurant
     Input: cuisine id = 1
            old_name = "Buger King"
            new_name = "Burger King"
