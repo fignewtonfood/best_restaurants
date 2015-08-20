@@ -76,14 +76,14 @@ x14) Return all review by restaurant_id
             restaurant_id2 = 2
     Output: review object ["This place is great!",1]
 // Test Restaurant::findName() (by name)
-15) Return a restaurant by cuisine id
+x15) Return a restaurant by cuisine id
     Input: cuisine_id = 1
            restaurant = "Burger King", 1
            cuisine_id2 = 2
            restaurant2 = "Dairy Queen", 2
     Output: restaurant object matching cuisine_id
 // Test Cuisine::updateType()
-16) Update a cuisine type
+x16) Update a cuisine type
     Input: old_cuisine = "seafod"
            new_cuisine = "seafood"
     Output: "seafood"

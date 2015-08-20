@@ -98,4 +98,22 @@
             $this->assertEquals($test_cuisine1, $result);
         }
 
+        function test_update()
+        {
+            //Arrange
+            $type = "Burgers";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $new_type = "Gourmet Burgers";
+
+            //Act
+            $test_cuisine->update($new_type);
+            $result = $test_cuisine->getType();
+
+            //Assert
+            $this->assertEquals($new_type, $result);
+
+        }
+
     }

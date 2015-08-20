@@ -15,6 +15,11 @@
             return $this->type;
         }
 
+        function setType($new_type)
+        {
+            $this->type = $new_type;
+        }
+
         function getId()
         {
             return $this->id;
@@ -24,6 +29,12 @@
         {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (type) VALUES ('{$this->getType()}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        function update($new_type)
+        {
+            $GLOBALS['DB']->exec("UPDATE cuisines SET type = '{$new_type}' WHERE id = {$this->getId()};");
+            $this->setType($new_type);
         }
 
         static function find($search_id)
