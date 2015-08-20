@@ -96,6 +96,40 @@
             //Assert
             $this->assertEquals(true, is_numeric($result));
         }
+
+        function find()
+        {
+            //Arrange
+            $type = "burger";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $name1 = "Burger King";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant1 = new Restaurant($cuisine_id,$name1);
+            $test_restaurant1->save();
+
+            $name2 = "Dairy Queen";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant2 = new Restaurant($cuisine_id,$name2);
+            $test_restaurant2->save();
+
+            $comment1 = "Great burger!";
+            $restaurant_id1 = $test_restaurant1->getId();
+            $test_review1 = new Review($restaurant_id1, $comment1);
+            $test_review1->save();
+
+            $comment2 = "Terrible burger!";
+            $restaurant_id2 = $test_restaurant2->getId();
+            $test_review2 = new Review($restaurant_id2, $comment2);
+            $test_review2->save();
+
+            //Act
+            $result = Review::find($test_restaurant1->getId());
+
+            //Assert
+            $this->assertEquals($test_review1, $result);
+        }
     }
 
 
