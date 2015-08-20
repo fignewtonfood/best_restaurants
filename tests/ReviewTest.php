@@ -130,6 +130,24 @@
             //Assert
             $this->assertEquals([$test_review1], $result);
         }
+
+        function test_update()
+        {
+            //Arrange
+            $comment = "This place is great!";
+            $test_review = new Review(1, $comment);
+            $test_review->save();
+
+            $new_comment = "This place gave me the runs";
+
+            //Act
+            $test_review->update($new_comment);
+            $result = $test_review->getComment();
+
+            //Assert
+            $this->assertEquals($new_comment, $result);
+        }
+
     }
 
 

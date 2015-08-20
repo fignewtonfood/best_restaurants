@@ -33,6 +33,17 @@
             return $this->id;
         }
 
+        function setComment($new_comment)
+        {
+            $this->comment = $new_comment;
+        }
+
+        function update($new_comment)
+        {
+            $GLOBALS['DB']->exec("UPDATE reviews SET comment  = '{$new_comment}' WHERE id = {$this->getId()};");
+            $this->comment = $new_comment;
+        }
+
         static function find($search_id)
         {
             $found_reviews = array();
