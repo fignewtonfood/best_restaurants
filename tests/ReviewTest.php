@@ -148,6 +148,25 @@
             $this->assertEquals($new_comment, $result);
         }
 
+        function test_deleteOne()
+        {
+            //Arrange
+            $comment1 = "Great burgers!";
+            $test_review1 = new Review(1, $comment1);
+            $test_review1->save();
+
+            $comment2 = "These burgers are terrible!";
+            $test_review2 = new Review(1, $comment2);
+            $test_review2->save();
+
+            //Act
+            $test_review1->deleteOne();
+            $result = Review::getAll();
+
+            //Assert
+            $this->assertEquals([$test_review2], $result);
+        }
+
     }
 
 

@@ -44,6 +44,11 @@
             $this->comment = $new_comment;
         }
 
+        function deleteOne()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM reviews WHERE id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_reviews = array();
