@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>{{ cuisine.getType }}</title>
+    </head>
+    <body>
+        <div class = 'container'>
+            <div class='jumbotron'>
+                <h1>{{ cuisine.getType }}</h1>
+            </div>
+        </div>
+
+        <div class = 'container'>
+            {% if restaurants is not empty %}
+                <p>Here are the restaurants:</p>
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class = 'container'>
+            <h4>Add a restaurant</h4>
+
+            <form action="/restaurant" method="post">
+                <input type="hidden" name="cuisine_id" id="cuisine_id" value="{{ cuisine.getId() }}">
+
+                <label for='name'>Restaurant Name</label>
+                <input id='name' name='name' type='text' required>
+
+                <button type='submit'>Add Restaurant</button>
+            </form>
+        </div>
+
+        <footer class='footer'>
+            <p><a href="/cuisine/{{ cuisine.getId }}/edit">Edit this cuisine</a></p>
+            <p><a href='/'>Home</a></p>
+        </footer>
+    </body>
+</html>

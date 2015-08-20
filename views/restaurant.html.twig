@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>{{ restaurant.getName }}</title>
+    </head>
+    <body>
+        <div class = 'container'>
+            <div class='jumbotron'>
+                <h1>{{ restaurant.getName }}</h1>
+            </div>
+        </div>
+
+
+        <footer class='footer'>
+            <p><a href="/restaurant/{{ restaurant.getId }}/edit">Edit this restaurant</a></p>
+            <p><a href='/'>Home</a></p>
+        </footer>
+    </body>
+</html>

@@ -1,8 +1,18 @@
 <html>
     <head>
-        <title></title>
+        <title>Restaurants</title>
     </head>
     <body>
 
+        {% if restaurants is not empty %}
+            <p>Here are all your restaurants:</p>
+            <ul>restaurant
+                {% for restaurant in restaurants %}
+                    <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>Restaurant updated</h3>
+        {% endif %}
     </body>
 </html>

@@ -1,0 +1,26 @@
+POSSIBLE REVIEW CODE FOR RESTAURANT.TWIG
+
+                <div class = 'container'>
+            {% if restaurants is not empty %}
+                <p>Here are the restaurants:</p>
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li><a href="/restaurant/{{ restaurant.getId }}">{{ restaurant.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class = 'container'>
+            <h4>Add a restaurant</h4>
+
+            <form action="/restaurant" method="post">
+                <input type="hidden" name="cuisine_id" id="cuisine_id" value="{{ cuisine.getId() }}">
+
+                <label for='name'>Restaurant Name</label>
+                <input id='name' name='name' type='text' required>
+
+                <button type='submit'>Add Restaurant</button>
+            </form>
+        </div>
+        ===================
