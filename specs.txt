@@ -105,17 +105,15 @@ x19) Update the cuisine associated with a restaurant
            old cuisine = 1
            new cuisine = 2
     Output: 2
-// Test Cuisine::deleteOne()
-x20) Delete one cuisine type
-    Input: "seafood", "burgers"
-    Output: "burgers"
 // Test Review::deleteOne()
-21) Delete one review comment
+20) Delete one review comment
     Input: "Terrible burgers!", "Great burgers!"
     Output: "Great burgers!"
 // Test Restaurant::deleteOne()
-22) Delete one restaurant name
-    Input: "Salmon King", "Dairy Queen"
+21) Delete one restaurant name and all comments associated
+    Input Names: "Salmon King", "Dairy Queen"
+    Input Comments1: "Great salmon!" "Terrible salmon!"
+    Input Comments2" "Great dairy!" "Terrible dairy!"
     Output: "Dairy Queen"
 ---------------------------------
 
@@ -126,3 +124,9 @@ x20) Delete one cuisine type
                restaurant2 = "Dairy Queen", 1
         Output: restaurant object matching name
     // Test Restaurant::findCuisine("type")
+
+
+    // Test Cuisine::deleteOne()
+    x20) Delete one cuisine type
+        Input: "seafood", "burgers"
+        Output: "burgers"

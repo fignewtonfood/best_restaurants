@@ -16,6 +16,8 @@
         protected function tearDown()
         {
             Restaurant::deleteAll();
+            Review::deleteAll();
+            Cuisine::deleteAll();
         }
 
         function test_save()
@@ -155,20 +157,40 @@
         function test_deleteOne()
         {
             //Arrange
-            $name1 = "Burger Mountain";
+            $name1 = "Salmon King";
             $test_restaurant1 = new Restaurant(1, $name1);
             $test_restaurant1->save();
-
-            $name2 = "Fish Street";
+            $name2 = "Dairy Queen";
             $test_restaurant2 = new Restaurant(1, $name2);
             $test_restaurant2->save();
+            //reviews for test rest 1
+            $comment1 = "Great Salmon";
+            $rest_id = $test_restaurant1->getId();
+            $test_review1 = new Review($rest_id, $comment1);
+            $test_review1->save();
+            $comment2 = "Terrible Salmon";
+            $test_review2 = new Review($rest_id, $comment1);
+            $test_review2->save();
+            //var_dump($test_review2);
+            //reviews for test rest 2
+            $comment3 = "Great Dairy!";
+            $rest_id2 = $test_restaurant2->getId();
+            $test_review3 = new Review($rest_id2, $comment3);
+            $test_review3->save();
+            $comment4 = "Terrible Dairy!";
+            $test_review4 = new Review($rest_id2, $comment4);
+            $test_review4->save();
+            //var_dump($test_review4);
 
             //Act
             $test_restaurant1->deleteOne();
-            $result = Restaurant::getAll();
+            $result1 = Restaurant::getAll();
+            $result2 = Review::getAll();
+            //var_dump($result2);
 
             //Assert
-            $this->assertEquals([$test_restaurant2], $result);
+            $this->assertEquals([$test_restaurant2], $result1);
+            $this->assertEquals([$test_review3, $test_review4], $result2);
         }
 
 
