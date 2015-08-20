@@ -152,6 +152,26 @@
             $this->assertEquals($new_cuisine_id, $result);
         }
 
+        function test_deleteOne()
+        {
+            //Arrange
+            $name1 = "Burger Mountain";
+            $test_restaurant1 = new Restaurant(1, $name1);
+            $test_restaurant1->save();
+
+            $name2 = "Fish Street";
+            $test_restaurant2 = new Restaurant(1, $name2);
+            $test_restaurant2->save();
+
+            //Act
+            $test_restaurant1->deleteOne();
+            $result = Restaurant::getAll();
+
+            //Assert
+            $this->assertEquals([$test_restaurant2], $result);
+        }
+
+
     }
 
  ?>

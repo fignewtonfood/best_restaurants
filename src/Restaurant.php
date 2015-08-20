@@ -55,6 +55,11 @@
             $this->setCuisineId($new_cuisine_id);
         }
 
+        function deleteOne()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_restaurants = array();
