@@ -23,6 +23,8 @@
         return $app['twig']->render('index.html.twig');
     });
 
+//===================CUISINE ROUTES====================//
+
     $app->get("/cuisine", function() use ($app) {
         return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
     });
@@ -41,7 +43,7 @@
     $app->patch('/cuisine/{id}', function($id), use ($app){
         $type = $_POST['type'];
         $cuisine = Cuisine::find($id);
-        $cuisine->update($cuisine);
+        $cuisine->update($type);
         $restaurants = Restaurant::find($id);
         return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $restaurants));
     });
@@ -49,5 +51,47 @@
     $app->delete('/cuisine/{id}', function($id) use ($app) {
         $cuisine = Cuisine::find($id);
         $cuisine->deleteOne();
-        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
+        return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
     });
+
+    //===============END CUISINE ROUTES====================//
+
+    //================RESTAURANT ROUTES====================//
+
+
+    $app->get("/restaurant", function() use ($app) {
+        return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
+    });
+
+    $app->post('/restaurant', function() use ($app){
+        $restaurant = new Restaurant($_POST['cuisine_id'], $_POST['name']);
+        $restaurant->save();
+        return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisines' => Cuisine::getAll()));
+    });
+
+    $app->get('/restaurant/{id}/edit', function($id), use ($app){
+        $restaurant = Restaurant::find($id);
+        return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
+    });
+
+    $app->patch('/restaurant/{id}', function($id), use ($app){
+        $name = $_POST['name'];
+        $restaurant = Restaurant::find($id);
+        $restaurant->update($name);
+        $reviews = Review::find($id);
+        return $app['twig']->render('restaurants.html.twig', array('restaurant' => $restaurant, 'reviews' => $reviews));
+    });
+
+    $app->delete('/restaurant/{id}', function($id) use ($app) {
+        $restaurant = Restaurant::find($id);
+        $restaurant->deleteOne();
+        return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
+    });
+
+
+
+
+    //===============END RESTAURANT ROUTES=================//
+
+    //================REVIEW ROUTES========================//
+    //===============END REVIEW ROUTES=====================//
