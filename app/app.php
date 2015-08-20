@@ -7,7 +7,7 @@
 
     $app = new Silex\Application();
 
-    $server = 'pgsql:host=localhost;dbname=best_restaurants';
+    $server = 'mysql:host=localhost;dbname=best_restaurants';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -35,12 +35,12 @@
         return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
-    $app->get('/cuisine/{id}/edit', function($id), use ($app){
+    $app->get('/cuisine/{id}/edit', function($id) use ($app){
         $cuisine = Cuisine::find($id);
         return $app['twig']->render('cuisine_edit.html.twig', array('cuisine' => $cuisine));
     });
 
-    $app->patch('/cuisine/{id}', function($id), use ($app){
+    $app->patch('/cuisine/{id}', function($id) use ($app){
         $type = $_POST['type'];
         $cuisine = Cuisine::find($id);
         $cuisine->update($type);
@@ -69,12 +69,12 @@
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisines' => Cuisine::getAll()));
     });
 
-    $app->get('/restaurant/{id}/edit', function($id), use ($app){
+    $app->get('/restaurant/{id}/edit', function($id) use ($app){
         $restaurant = Restaurant::find($id);
         return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
     });
 
-    $app->patch('/restaurant/{id}', function($id), use ($app){
+    $app->patch('/restaurant/{id}', function($id) use ($app){
         $name = $_POST['name'];
         $restaurant = Restaurant::find($id);
         $restaurant->update($name);
@@ -87,11 +87,39 @@
         $restaurant->deleteOne();
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
     });
-
-
-
-
     //===============END RESTAURANT ROUTES=================//
 
+
     //================REVIEW ROUTES========================//
+
+    // $app->get("/review", function() use ($app) {
+    //     return $app['twig']->render('reviews.html.twig', array('reviews' => Review::getAll()));
+    // });
+
+    // $app->post('/restaurant', function() use ($app){
+    //     $restaurant = new Restaurant($_POST['cuisine_id'], $_POST['name']);
+    //     $restaurant->save();
+    //     return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisines' => Cuisine::getAll()));
+    // });
+    //
+    // $app->get('/restaurant/{id}/edit', function($id), use ($app){
+    //     $restaurant = Restaurant::find($id);
+    //     return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
+    // });
+    //
+    // $app->patch('/restaurant/{id}', function($id), use ($app){
+    //     $name = $_POST['name'];
+    //     $restaurant = Restaurant::find($id);
+    //     $restaurant->update($name);
+    //     $reviews = Review::find($id);
+    //     return $app['twig']->render('restaurants.html.twig', array('restaurant' => $restaurant, 'reviews' => $reviews));
+    // });
+    //
+    // $app->delete('/restaurant/{id}', function($id) use ($app) {
+    //     $restaurant = Restaurant::find($id);
+    //     $restaurant->deleteOne();
+    //     return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
+    // });
+
     //===============END REVIEW ROUTES=====================//
+    return $app;
