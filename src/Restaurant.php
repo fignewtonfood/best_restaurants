@@ -33,6 +33,19 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($search_id)
+        {
+            $found_restaurants = array();
+            $restaurants = Restaurant::getAll();
+            foreach ($restaurants as $restaurant){
+                $cuisine_id = $restaurant->getCuisineId();
+                if ($cuisine_id == $search_id){
+                    array_push($found_restaurants, $restaurant);
+                }
+            }
+            return $found_restaurants;
+        }
+
         static function getAll()
         {
             $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
