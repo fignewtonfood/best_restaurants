@@ -15,7 +15,6 @@
         protected function tearDown()
         {
             Cuisine::deleteAll();
-
         }
 
         function test_save()
@@ -114,6 +113,25 @@
             //Assert
             $this->assertEquals($new_type, $result);
 
+        }
+
+        function test_deleteOne()
+        {
+            //Arrange
+            $type1 = "burgers";
+            $test_cuisine1 = new Cuisine($type1);
+            $test_cuisine1->save();
+
+            $type2 = "seafood";
+            $test_cuisine2 = new Cuisine($type2);
+            $test_cuisine2->save();
+
+            //Act
+            $test_cuisine1->deleteOne();
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([$test_cuisine2], $result);
         }
 
     }

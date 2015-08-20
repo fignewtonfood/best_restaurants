@@ -37,6 +37,11 @@
             $this->setType($new_type);
         }
 
+        function deleteOne()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_cuisine = null;

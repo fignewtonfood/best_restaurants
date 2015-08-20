@@ -100,13 +100,23 @@ x18) Update the name of a restaurant
            new_name = "Burger King"
     Output: "Burger King"
 // Test Restaurant::updateCuisineId()
-19) Update the cuisine associated with a restaurant
+x19) Update the cuisine associated with a restaurant
     Input: name = "Burger King"
            old cuisine = 1
            new cuisine = 2
     Output: 2
-
-
+// Test Cuisine::deleteOne()
+x20) Delete one cuisine type
+    Input: "seafood", "burgers"
+    Output: "burgers"
+// Test Review::deleteOne()
+21) Delete one review comment
+    Input: "Terrible burgers!", "Great burgers!"
+    Output: "Great burgers!"
+// Test Restaurant::deleteOne()
+22) Delete one restaurant name
+    Input: "Salmon King", "Dairy Queen"
+    Output: "Dairy Queen"
 ---------------------------------
 
 
