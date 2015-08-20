@@ -33,6 +33,19 @@
             return $this->id;
         }
 
+        static function find($search_id)
+        {
+            $found_reviews = array();
+            $reviews = Review::getAll();
+            foreach ($reviews as $review){
+                $restaurant_id = $review->getRestId();
+                if ($restaurant_id == $search_id) {
+                    array_push($found_reviews, $review);
+                }
+            }
+            return $found_reviews;
+        }
+
         static function getAll()
         {
             $returned_reviews = $GLOBALS['DB']->query("SELECT * FROM reviews;");

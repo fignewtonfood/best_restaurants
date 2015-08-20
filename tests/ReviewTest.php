@@ -97,7 +97,7 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-        function find()
+        function test_find()
         {
             //Arrange
             $type = "burger";
@@ -128,7 +128,7 @@
             $result = Review::find($test_restaurant1->getId());
 
             //Assert
-            $this->assertEquals($test_review1, $result);
+            $this->assertEquals([$test_review1], $result);
         }
     }
 
