@@ -73,15 +73,23 @@
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
     });
     // RESTAURANT PAGE - DISLAYS AFTER ADDIND A NEW RESTAURANT ON MAIN RESTAURANT PAGE
-    $app->post('/restaurants', function() use ($app){
+    $app->post('/cuisine_restaurants', function() use ($app){
         $restaurant = new Restaurant($_POST['cuisine_id'], $_POST['name']);
         $restaurant->save();
-        return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisines' => Cuisine::getAll()));
+        $cuisine_rests = Restaurant::find($_POST['cuisine_id']);
+        return $app['twig']->render('cuisine.html.twig', array('restaurants' => $cuisine_rests, 'cuisines' => Cuisine::getAll()));
     });
     // RETAURANT {ID} EDIT PAGE - DISPLAYS FIELD TO CHANGE NAME OR DELETE RESTAURANT
     $app->get('/restaurant/{id}/edit', function($id) use ($app){
         $restaurant = Restaurant::find($id);
         return $app['twig']->render('restaurant_edit.html.twig', array('restaurant' => $restaurant));
+    });
+    // RESTAURANT PAGE - DISPLAY RESTAURANTS MATCHING TYPE AND BUTTON GO TO EDIT PAGE
+    $app->get("/restaurant/{id}", function($id) use ($app){
+        //$reviews = Review::find($id);
+        $restaurant = Restaurant::findById($id);
+        //var_dump($restaurant);
+        return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant));
     });
     // SINGLE RESTAURANT PAGE - TAKES NEW NAME INFO, DISPLAYS REVIEWS
     $app->patch('/restaurant/{id}', function($id) use ($app){
@@ -89,12 +97,6 @@
         $restaurant = Restaurant::find($id);
         $restaurant->update($name);
         $reviews = Review::find($id);
-        return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $reviews));
-    });
-    // RESTAURANT PAGE - DISPLAY RESTAURANTS MATCHING TYPE AND BUTTON GO TO EDIT PAGE
-    $app->get("/restaurant/{id}", function($id) use ($app){
-        $reviews = Review::find($id);
-        $restaurant = Restaurant::find($id);
         return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant, 'reviews' => $reviews));
     });
     // DELETE RESTAURANT PAGE - DISPLAYS AFTER DELETING RESTAURANT, LISTS RESTAURANT

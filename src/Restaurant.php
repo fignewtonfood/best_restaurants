@@ -73,6 +73,18 @@
             }
             return $found_restaurants;
         }
+        static function findById($search_id)
+        {
+            $found_restaurants = null;
+            $restaurants = Restaurant::getAll();
+            foreach ($restaurants as $restaurant){
+                $rest_id = $restaurant->getId();
+                if ($rest_id == $search_id){
+                    $found_restaurants = $restaurant;
+                }
+            }
+            return $found_restaurants;
+        }
 
         static function getAll()
         {
