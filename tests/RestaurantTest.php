@@ -117,6 +117,40 @@
             $this->assertEquals([$test_restaurant1],$result);
         }
 
+        function test_updateName()
+        {
+            //Arrange
+            $name = "Booger King";
+            $test_restaurant = new Restaurant(1, $name);
+            $test_restaurant->save();
+
+            $new_name = "Burger King";
+
+            //Act
+            $test_restaurant->updateName($new_name);
+            $result = $test_restaurant->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
+        }
+
+        function test_updateCuisineId()
+        {
+            //Arrange
+            $name = "Burger King";
+            $cuisine_id = 1;
+            $test_restaurant = new Restaurant($cuisine_id, $name);
+            $test_restaurant->save();
+
+            $new_cuisine_id = 2;
+
+            //Act
+            $test_restaurant->updateCuisineId($new_cuisine_id);
+            $result = $test_restaurant->getCuisineId();
+
+            //Assert
+            $this->assertEquals($new_cuisine_id, $result);
+        }
 
     }
 

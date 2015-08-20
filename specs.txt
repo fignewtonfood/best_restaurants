@@ -88,7 +88,7 @@ x16) Update a cuisine type
            new_cuisine = "seafood"
     Output: "seafood"
 // Test Review::updateComment()
-17) Update a comment posted in a review
+x17) Update a comment posted in a review
     Input: restaurant id = 1
            old_comment = "This place is great!"
            new_comment = "This place sucks!!!"

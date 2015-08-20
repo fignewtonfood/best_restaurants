@@ -27,7 +27,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO cuisines (type) VALUES ('{$this->getType()}')");
+            $GLOBALS['DB']->exec("INSERT INTO cuisines (type) VALUES ('{$this->getType()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
